@@ -1,0 +1,1 @@
+﻿public enum elemID { Carbon, Tungsten, Uranium, Strontium, Arsenic, Krypton, Neon, Dubnium, Cobalt, Technetium, Plutonium, Radium }
