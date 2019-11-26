@@ -89,6 +89,19 @@ namespace PetrusGames.HelperLibrary.Json
                 item.flameSpawnRateBoost = jsonsData[i].flameSpawnRateBoost;
                 item.heatIncreaseRateBoost = jsonsData[i].heatIncreaseRateBoost;
                 item.difficultyIncreaseTimer = jsonsData[i].difficultyIncreaseTimer;
+                item.baseEfficiency = jsonsData[i].baseEfficiency;
+                item.efficiencyLostPerConveyorBeltFail = jsonsData[i].efficiencyLostPerConveyorBeltFail;
+                item.efficiencyLostPerFlameTick = jsonsData[i].efficiencyLostPerFlameTick;
+                item.efficiencyLostPerOverheatTick = jsonsData[i].efficiencyLostPerOverheatTick;
+                item.efficiencyLostPerUnderchargeTick = jsonsData[i].efficiencyLostPerUnderchargeTick;
+                item.efficiencyLostPerWrongElement = jsonsData[i].efficiencyLostPerWrongElement;
+                item.efficientyLostPerDestroyedElement = jsonsData[i].efficientyLostPerDestroyedElement;
+                item.gameTime = jsonsData[i].gameTime;
+                item.timeToDrawGraph = jsonsData[i].timeToDrawGraph;
+                item.timeToAddEfficiency = jsonsData[i].timeToAddEfficiency;
+                item.fireDamage = jsonsData[i].fireDamage;
+                item.fireTick = jsonsData[i].fireTick;
+
                 items.Add(item);
             }
             return items;

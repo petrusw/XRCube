@@ -6,6 +6,7 @@
 
 
 
+using PetrusGames.NuclearPlant.Managers.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace PetrusGames
     {
         #region SERIALIZED FIELDS
         [SerializeField] private ConveyorBeltFailCollider failCollider;
-        [SerializeField] private float efficiencyLostPerConveyorBeltFail;
+        private float efficiencyLostPerConveyorBeltFail;
         #endregion
 
         #region PRIVATE FIELDS
@@ -34,6 +35,13 @@ namespace PetrusGames
         #endregion
 
         #region PRIVATE FUNCTIONS
+
+        public override void Start()
+        {
+            base.Start();
+            efficiencyLostPerConveyorBeltFail = DataManager.Instance.EfficiencyLostPerConveyorBeltFail;
+        }
+
         public override void OnEnable()
         {
             base.OnEnable();

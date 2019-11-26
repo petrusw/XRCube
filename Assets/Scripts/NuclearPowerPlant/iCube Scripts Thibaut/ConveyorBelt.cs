@@ -3,6 +3,7 @@ using PetrusGames;
 using PetrusGames.NuclearPlant.Managers.Data;
 using PetrusGames.NuclearPlant.Objects.Elements;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ThibautPetit
@@ -12,6 +13,8 @@ namespace ThibautPetit
         #region SERIALIZED FIELDS
         [SerializeField] private PlayerAbility playerAbility;
         [SerializeField] private DifficultyIncrease difficultyIncrease;
+        [SerializeField] private List<Animator> anims;
+
         #endregion
 
         #region PRIVATE FIELDS
@@ -65,6 +68,11 @@ namespace ThibautPetit
         {
             movingLeft = !movingLeft;
             onChangeDirection?.Invoke(movingLeft);
+
+            foreach (var anim in anims)
+            {
+                anim.SetFloat("speedMultiplier", anim.GetFloat("speedMultiplier") * -1);
+            }
         }
 
         // aftah put ontrigger for sound

@@ -6,16 +6,22 @@
 
 
 
-using System.Collections;
+using AftahGames.NuclearSimulator;
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
-
+using TMPro;
 
 namespace PetrusGames
 {
     public class GameManager : MonoBehaviour
     {
         #region SERIALIZED FIELDS
+        [SerializeField] private Animator endGameAnim;
+        [SerializeField] private AnimationClip anim;
+        [SerializeField] private TextMeshPro good;
+        [SerializeField] private TextMeshPro bad;
+        [SerializeField] private float explosionTime;
         #endregion
 
         #region PRIVATE FIELDS
@@ -34,12 +40,14 @@ namespace PetrusGames
 
         public void EndGame()
         {
-
+            StartCoroutine("End", good);
         }
 
         public void GameOver()
         {
-            GameOverAnim.instance.ExplosionAnimation();
+            SoundManager.Instance.PlaySound("StarTrekEmergency");
+            SoundManager.Instance.PlaySound("ExplosionFinal");
+            StartCoroutine("End", bad);
         }
 
         #endregion
@@ -67,6 +75,15 @@ namespace PetrusGames
                 instance = this;
         }
 
+        private IEnumerator End(TextMeshPro text)
+        {
+            GameOverAnim.instance.ExplosionAnimation();
+            yield return new WaitForSeconds(explosionTime);
+            endGameAnim.SetTrigger("Play");
+            text.gameObject.SetActive(true);
+            yield return new WaitForSeconds(anim.length + 0.2f);
+            Time.timeScale = 0f;
+        }
         #endregion
 
 

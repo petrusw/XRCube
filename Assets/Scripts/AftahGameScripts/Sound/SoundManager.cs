@@ -14,17 +14,22 @@ namespace AftahGames.NuclearSimulator
 {
     public class SoundManager : MonoBehaviour
     {
-        private static SoundManager _instance = new SoundManager();
 
 
 
         #region SERIALIZED FIELDS
+        [SerializeField] [Range(1, 10)]
+        private float mainVolume = 1f;
+
         [SerializeField]
         private SoundClips[] soundClips;
 
         #endregion
 
         #region PRIVATE FIELDS
+
+        private static SoundManager _instance = new SoundManager();
+        
         #endregion
 
         #region PUBLIC PROPERTIES
@@ -67,19 +72,20 @@ namespace AftahGames.NuclearSimulator
                     GameObject gameObject = new GameObject("soundClip_" + i + "_" + soundClips[i].name);
                     gameObject.transform.SetParent(this.transform);
                     soundClips[i].audioSource = gameObject.AddComponent<AudioSource>();
+                    soundClips[i].audioSource.outputAudioMixerGroup = soundClips[i].outpup;   
                     soundClips[i].audioSource.clip = soundClips[i].audioClips;
-                    soundClips[i].audioSource.playOnAwake = soundClips[i].playOnAwake  ;
+                    soundClips[i].audioSource.playOnAwake = soundClips[i].playOnAwake;
                     soundClips[i].audioSource.pitch = soundClips[i].pitch;
                     soundClips[i].audioSource.loop = soundClips[i].loop;
-                    soundClips[i].audioSource.panStereo = soundClips[i].stereoPan ;
+                    soundClips[i].audioSource.panStereo = soundClips[i].stereoPan;
                     soundClips[i].audioSource.mute = soundClips[i].mute;
-                    soundClips[i].audioSource.volume = soundClips[i].volume; 
+                    soundClips[i].audioSource.volume = soundClips[i].volume;
 
                 }
 
                 if (soundClips[i].playOnAwake)
                 {
-                    soundClips[i].audioSource.playOnAwake = true;  ;
+                    soundClips[i].audioSource.playOnAwake = true; ;
                     return;
                 }
 
@@ -97,7 +103,8 @@ namespace AftahGames.NuclearSimulator
                 {
                     if (!soundClips[i].audioSource.isPlaying)
                     {
-                        soundClips[i].audioSource.Play()   ;
+                        soundClips[i].audioSource.volume *= mainVolume;  
+                        soundClips[i].audioSource.Play();
 
                     }
                     return;
@@ -108,7 +115,7 @@ namespace AftahGames.NuclearSimulator
 
         }
 
-       
+
 
         public void StopSound(string name)
         {
@@ -117,7 +124,7 @@ namespace AftahGames.NuclearSimulator
             {
                 if (soundClips[i].name == name)
                 {
-                    soundClips[i].audioSource.Stop(); 
+                    soundClips[i].audioSource.Stop();
                     return;
                 }
             }

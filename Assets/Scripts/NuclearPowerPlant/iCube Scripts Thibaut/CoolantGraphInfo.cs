@@ -6,8 +6,7 @@
 
 
 
-using System;
-using System.Collections;
+using PetrusGames.NuclearPlant.Managers.Data;
 using System.Collections.Generic;
 using ThibautPetit;
 using UnityEngine;
@@ -19,7 +18,7 @@ namespace PetrusGames
     {
         #region SERIALIZED FIELDS
         [SerializeField] private List<HeatInfo> heatInfos = new List<HeatInfo>();
-        [SerializeField] private float efficiencyLostPerOverheatTick;
+        private float efficiencyLostPerOverheatTick;
         #endregion
 
         #region PRIVATE FIELDS
@@ -35,6 +34,13 @@ namespace PetrusGames
         #endregion
 
         #region PRIVATE FUNCTIONS
+
+        public override void Start()
+        {
+            base.Start();
+            efficiencyLostPerOverheatTick = DataManager.Instance.EfficiencyLostPerOverheatTick;
+        }
+
         public override void OnEnable()
         {
             base.OnEnable();

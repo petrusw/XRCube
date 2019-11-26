@@ -98,13 +98,15 @@ namespace ThibautPetit
             elemID ElementID = element.GetComponent<ElementIDScript>().ElemID;
             if (RequiredID == ElementID && requiresElement)
             {
-                CorrectElementDetected?.Invoke();
+                SoundManager.Instance.PlaySound("ReceiverElement");
                 SoundManager.Instance.PlaySound("GoodElement");  
+                CorrectElementDetected?.Invoke();
             }
             else
             {
-                WrongElementDetected?.Invoke();
+                SoundManager.Instance.PlaySound("ReceiverElement");
                 SoundManager.Instance.PlaySound("WrongElement");
+                WrongElementDetected?.Invoke();
             }
 
             element.gameObject.SetActive(false);
@@ -123,8 +125,7 @@ namespace ThibautPetit
         {
             if (other.CompareTag("Element"))
             {
-                if (requiresElement)
-                    SoundManager.Instance.PlaySound("ReceiverElement");
+               
                 CompareElements(other);
                 //ResetRequiredID();
             }

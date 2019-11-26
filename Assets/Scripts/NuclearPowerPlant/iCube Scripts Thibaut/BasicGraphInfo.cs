@@ -6,6 +6,7 @@
 
 
 
+using PetrusGames.NuclearPlant.Managers.Data;
 using System.Collections.Generic;
 using ThibautPetit;
 using UnityEngine;
@@ -22,14 +23,14 @@ namespace PetrusGames
         #endregion
 
         #region PRIVATE FIELDS
-        [SerializeField] private float baseEfficiency;
-        [SerializeField] private float efficientyLostPerDestroyedElement;
-        [SerializeField] private float efficiencyLostPerWrongElement;
-        [SerializeField] private float efficiencyLostPerUnderchargeTick;
+        private float baseEfficiency;
+        private float efficientyLostPerDestroyedElement;
+        private float efficiencyLostPerWrongElement;
+        private float efficiencyLostPerUnderchargeTick;
         [SerializeField] private int gameTimeInMinutes;
 
         private List<float> scores = new List<float>();
-        private float timer = 5f;
+        private float timeToAddEfficiency;
         private float remainingTimer;
         protected float currentEfficiency;
         private int minutesPassed = 0;
@@ -77,9 +78,14 @@ namespace PetrusGames
             idCheck.WrongElementDetected += WrongElementHandler;
         }
 
-        private void Start()
+        public virtual void Start()
         {
-            remainingTimer = timer;
+            timeToAddEfficiency = DataManager.Instance.TimeToAddEfficiency;
+            baseEfficiency = DataManager.Instance.BaseEfficiency;
+            efficientyLostPerDestroyedElement = DataManager.Instance.EfficientyLostPerDestroyedElement;
+            efficiencyLostPerWrongElement = DataManager.Instance.EfficiencyLostPerWrongElement;
+            efficiencyLostPerUnderchargeTick = DataManager.Instance.EfficiencyLostPerUnderchargeTick;
+            remainingTimer = timeToAddEfficiency;
             currentEfficiency = baseEfficiency;
             scores.Add(currentEfficiency);
         }
@@ -101,7 +107,7 @@ namespace PetrusGames
 
         private void ResetTimer()
         {
-            remainingTimer = timer;
+            remainingTimer = timeToAddEfficiency;
 
             if (currentEfficiency <= 0)
                 currentEfficiency = 0;

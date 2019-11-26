@@ -6,6 +6,7 @@
 
 
 
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -32,7 +33,7 @@ namespace PetrusGames
         {
             foreach (var text in tmp)
             {
-                text.text = currentHealth.ToString();
+                text.text = Convert.ToInt32(currentHealth).ToString();
             }
         }
         #endregion

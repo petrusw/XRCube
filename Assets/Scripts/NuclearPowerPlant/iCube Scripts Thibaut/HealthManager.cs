@@ -107,7 +107,8 @@ namespace PetrusGames
         {
             if (CurrentHealth <= 0)
             {
-                GameManager.instance.GameOver();               
+                currentHealth = 0;
+                GameManager.instance.GameOver();                           
             }
         }
         #endregion

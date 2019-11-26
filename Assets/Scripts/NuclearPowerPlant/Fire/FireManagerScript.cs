@@ -6,6 +6,7 @@
 
 
 
+using PetrusGames.NuclearPlant.Managers.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -20,14 +21,17 @@ namespace PetrusGames.NuclearPlant.Objects.Fire
         #region SERIALIZED FIELDS
         [Header("Current Fire Dammage")]
         [SerializeField] private int totalFireDammage;
-        [Header("Set time for the damage event  ")]
-        [SerializeField] private float timeBetweenDamage;
+       // [Header("Set time for the damage event  ")]
+        private float timeBetweenDamage;
         [Header(" If this is Singleton set true")]
         [SerializeField] private bool IsSingleton;
         #endregion
 
         #region PRIVATE FIELDS
         private float tBD;
+
+        private float fireDamageTick;
+        private float fireDamage;
         #endregion
 
         #region PUBLIC PROPERTIES
@@ -60,7 +64,6 @@ namespace PetrusGames.NuclearPlant.Objects.Fire
     void Start()
     {
             // set the timer to the inspector value
-            tBD = timeBetweenDamage;
             // if is singleton
             if (Instance != null)
              {
@@ -73,8 +76,11 @@ namespace PetrusGames.NuclearPlant.Objects.Fire
                     Instance = this;
                 }
             }
-            
-    }
+
+            timeBetweenDamage = DataManager.Instance.FireTick;
+            fireDamage = DataManager.Instance.FireDamage;
+            tBD = timeBetweenDamage;
+        }
         
     void Update()
     {
@@ -86,6 +92,7 @@ namespace PetrusGames.NuclearPlant.Objects.Fire
                 tBD = timeBetweenDamage;
                 // launch the damage event
                 FireDamageEvent?.Invoke(totalFireDammage);
+                HealthManager.instance.TakeDamage(fireDamage * totalFireDammage);
             }
     }
         #endregion

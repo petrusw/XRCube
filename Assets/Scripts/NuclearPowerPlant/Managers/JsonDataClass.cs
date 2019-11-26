@@ -57,6 +57,21 @@ namespace PetrusGames.NuclearPlant.Managers.Data.Json
         public float flameSpawnRateBoost;
         public float heatIncreaseRateBoost;
         public float difficultyIncreaseTimer;
+        public float baseEfficiency;
+        public float efficientyLostPerDestroyedElement;
+        public float efficiencyLostPerWrongElement;
+        public float efficiencyLostPerUnderchargeTick;
+        public float efficiencyLostPerConveyorBeltFail;
+        public float efficiencyLostPerFlameTick;
+        public float efficiencyLostPerOverheatTick;
+        public float timeToDrawGraph;
+        public float timeToAddEfficiency;
+        public float fireDamage;
+        public float fireTick;
+        public float gameTime;
+
+
+
         #endregion
 
     }

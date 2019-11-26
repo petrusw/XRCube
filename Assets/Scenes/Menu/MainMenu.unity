@@ -494,12 +494,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.27398553, g: 0.8584906, b: 0.25511748, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: d81a0f2186be30340936e20231d0ce98, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85e7cfd023b8c4d4f86fb1948df20959, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -841,8 +841,8 @@ MonoBehaviour:
   Strings:
   - XR Cube Experience
   - XR Cube Settings
-  - Walk in Art
-  - Drop the Soap Simulator 2019
+  - Tutorial
+  - None
 --- !u!4 &780841996
 Transform:
   m_ObjectHideFlags: 0
@@ -952,12 +952,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.09803919, g: 0.9137255, b: 0.189813, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 74b88ce5769cf5643abf723178443478, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 37f484914aea7a741a0c6bc74d7ad3f7, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 160638ec534b69a4298b919cc888cff3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ad250f38e4b21241b7cd207becf2bad, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1438,7 +1438,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1532987216}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -715, y: -268.4842, z: -44.07715}
+  m_LocalPosition: {x: -720, y: -268.4842, z: -44.07715}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1097448464}

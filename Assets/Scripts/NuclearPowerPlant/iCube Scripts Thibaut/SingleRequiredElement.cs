@@ -18,6 +18,7 @@ namespace PetrusGames
     {
         #region SERIALIZED FIELDS
         [SerializeField] private List<ReceiverIDCheck> idChecks;
+        [SerializeField] private List<Animator> anims;
         #endregion
 
         #region PRIVATE FIELDS
@@ -96,11 +97,13 @@ namespace PetrusGames
             {
                 if (i == random)
                 {
+                    anims[i].SetBool("Blinking", true);
                     idChecks[i].ResetRequiredID();
                     idChecks[i].RequiresElement = true;
                 }
                 else
                 {
+                    anims[i].SetBool("Blinking", false);
                     idChecks[i].RequiresElement = false;
                 }
             }

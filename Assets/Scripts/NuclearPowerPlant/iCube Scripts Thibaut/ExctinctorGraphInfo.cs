@@ -6,6 +6,7 @@
 
 
 
+using PetrusGames.NuclearPlant.Managers.Data;
 using UnityEngine;
 
 
@@ -15,7 +16,7 @@ namespace PetrusGames
     {
         #region SERIALIZED FIELDS
         [SerializeField] ExtinguishedFireInfo fireInfo;
-        [SerializeField] private float efficiencyLostPerFlameTick;
+        private float efficiencyLostPerFlameTick;
         #endregion
 
         #region PRIVATE FIELDS
@@ -31,6 +32,13 @@ namespace PetrusGames
         #endregion
 
         #region PRIVATE FUNCTIONS        
+
+        public override void Start()
+        {
+            base.Start();
+            efficiencyLostPerFlameTick = DataManager.Instance.EfficiencyLostPerFlameTick;
+        }
+
         public override void OnEnable()
         {
             base.OnEnable();

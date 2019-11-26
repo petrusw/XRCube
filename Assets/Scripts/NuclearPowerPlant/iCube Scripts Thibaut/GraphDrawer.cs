@@ -6,6 +6,8 @@
 
 
 
+using PetrusGames.NuclearPlant.Managers.Data;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,16 +23,17 @@ namespace PetrusGames
         [SerializeField] private Transform zero;
         [SerializeField] private Transform ten;
 
-        [SerializeField] private int maxScore;//
         #endregion
 
         #region PRIVATE FIELDS
+        private int maxScore;
         private int numberOfSections;
         private float deltaX;
         private float deltaY;
         List<List<float>> scoresList;
 
-        private float tempTimer = 20f;
+        private float timeToDraw;
+        private float tempTimer;
         #endregion
 
         #region PUBLIC PROPERTIES
@@ -43,6 +46,13 @@ namespace PetrusGames
         #endregion
 
         #region PRIVATE FUNCTIONS
+
+        private void Start()
+        {
+            maxScore = Convert.ToInt32(DataManager.Instance.BaseEfficiency);
+            timeToDraw = DataManager.Instance.TimeToDrawGraph;
+            tempTimer = timeToDraw;
+        }
 
         private void Update()
         {

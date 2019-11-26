@@ -6,6 +6,7 @@
 
 
 
+using PetrusGames.NuclearPlant.Managers.Data;
 using UnityEngine;
 
 
@@ -14,7 +15,7 @@ namespace PetrusGames
     public class GameTimer : MonoBehaviour
     {
         #region SERIALIZED FIELDS
-        [SerializeField] private float gameTime; //
+        private float gameTime;
         #endregion
 
         #region PRIVATE FIELDS
@@ -44,7 +45,12 @@ namespace PetrusGames
         private void Awake()
         {
             SetAsSingleton();
-            remainingGameTime = gameTime;
+        }
+
+        private void Start()
+        {
+            gameTime = DataManager.Instance.GameTime * 60;
+            remainingGameTime = gameTime;         
         }
 
         private void Update()

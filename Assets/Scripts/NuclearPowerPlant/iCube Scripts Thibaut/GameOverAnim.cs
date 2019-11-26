@@ -12,6 +12,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+
 namespace PetrusGames
 {
     public class GameOverAnim : MonoBehaviour
@@ -32,7 +33,10 @@ namespace PetrusGames
 
         public void ExplosionAnimation()
         {
+         
             StartCoroutine("Boom");
+           
+            
         }
 
         #endregion

@@ -34,6 +34,11 @@ namespace PetrusGames.NuclearPlant.Objects.Elements
 
         #region PRIVATE FUNCTIONS
 
+        private void OnEnable()
+        {
+            gameObject.GetComponent<BoxCollider>().isTrigger = false;
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             CollisionCheck(collision.gameObject);

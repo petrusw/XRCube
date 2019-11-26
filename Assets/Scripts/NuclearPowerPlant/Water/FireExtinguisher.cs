@@ -93,7 +93,6 @@ namespace ThibautPetit
                 StopCoroutine("ShowSteam");
                 StartCoroutine("ShowSteam");
                 extinguisherAnim.SetTrigger("Action");
-                //Aftah put play sound
                 SoundManager.Instance.PlaySound("Extincteur");
             }
         }

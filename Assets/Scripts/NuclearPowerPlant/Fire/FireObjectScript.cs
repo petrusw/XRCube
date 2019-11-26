@@ -25,6 +25,9 @@ namespace PetrusGames.NuclearPlant.Objects.Fire
         [SerializeField] private ParticleSystem particle;
         [SerializeField] private GameObject dissolveEffect;
         [SerializeField] private BoxCollider boxCollider;
+        [SerializeField] private GameObject sparks;
+        [SerializeField] private GameObject flameObject;
+        [SerializeField] private float timeBeforeFlames;
         #endregion
 
         #region PRIVATE FIELDS
@@ -115,10 +118,14 @@ namespace PetrusGames.NuclearPlant.Objects.Fire
         private void OnEnable()
         {
             FireManagerScript.Instance.TotalFireDamageAdd = 1;
+            StartCoroutine("FireApparition");
         }
         private void OnDisable()
         {
             FireManagerScript.Instance.TotalFireDamageRemove = 1;
+            sparks.SetActive(true);
+            flameObject.SetActive(false);
+            boxCollider.enabled = false;
         }
 
         private IEnumerator ShutDownFlames()
@@ -131,6 +138,13 @@ namespace PetrusGames.NuclearPlant.Objects.Fire
             gameObject.SetActive(false);
         }
 
+        private IEnumerator FireApparition()
+        {
+            yield return new WaitForSeconds(timeBeforeFlames);
+            sparks.SetActive(false);
+            flameObject.SetActive(true);
+            boxCollider.enabled = true;
+        }
         #endregion
 
 

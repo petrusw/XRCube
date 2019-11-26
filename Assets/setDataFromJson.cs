@@ -48,7 +48,18 @@ public class setDataFromJson : MonoBehaviour
         dataManager.MaxHeat = jsonDataObjects[0].maxHeat;
         dataManager.OverHeatTick = jsonDataObjects[0].overHeatTick;
         dataManager.SurchargeTick = jsonDataObjects[0].surchargeTick;
-        
+        dataManager.BaseEfficiency = jsonDataObjects[0].baseEfficiency;
+        dataManager.EfficiencyLostPerConveyorBeltFail = jsonDataObjects[0].efficiencyLostPerConveyorBeltFail;
+        dataManager.EfficiencyLostPerFlameTick = jsonDataObjects[0].efficiencyLostPerFlameTick;
+        dataManager.EfficiencyLostPerOverheatTick = jsonDataObjects[0].efficiencyLostPerOverheatTick;
+        dataManager.EfficiencyLostPerUnderchargeTick = jsonDataObjects[0].efficiencyLostPerUnderchargeTick;
+        dataManager.EfficiencyLostPerWrongElement = jsonDataObjects[0].efficiencyLostPerWrongElement;
+        dataManager.EfficientyLostPerDestroyedElement = jsonDataObjects[0].efficientyLostPerDestroyedElement;
+        dataManager.TimeToAddEfficiency = jsonDataObjects[0].timeToAddEfficiency;
+        dataManager.TimeToDrawGraph = jsonDataObjects[0].timeToDrawGraph;
+        dataManager.FireDamage = jsonDataObjects[0].fireDamage;
+        dataManager.FireTick = jsonDataObjects[0].fireTick;
+        dataManager.GameTime = jsonDataObjects[0].gameTime;
 
     }
 

@@ -8,7 +8,10 @@ public class ResetGame : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.R))
+        {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Time.timeScale = 1f;
+        }
 
         if (Input.GetKeyDown(KeyCode.Escape))
             Application.Quit();
