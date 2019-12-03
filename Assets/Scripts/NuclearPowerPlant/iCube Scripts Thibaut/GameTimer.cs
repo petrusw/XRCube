@@ -10,6 +10,7 @@ using PetrusGames.NuclearPlant.Managers.Data;
 using UnityEngine;
 
 
+
 namespace PetrusGames
 {
     public class GameTimer : MonoBehaviour
@@ -62,8 +63,9 @@ namespace PetrusGames
         private void CountDown()
         {
             remainingGameTime -= Time.deltaTime;
+
             if (remainingGameTime <= 0)
-            {
+            {                
                 GameManager.instance.EndGame();
                 counting = false;
             }

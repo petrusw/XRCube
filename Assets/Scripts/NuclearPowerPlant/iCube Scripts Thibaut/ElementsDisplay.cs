@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ThibautPetit;
 using TMPro;
 using UnityEngine;
+using AftahGames.NuclearSimulator; 
 
 public class ElementsDisplay : MonoBehaviour
 {
@@ -27,13 +28,14 @@ public class ElementsDisplay : MonoBehaviour
         {
             time += Time.deltaTime;
             var a = characterTime.SetNewString(0.25f, time, fuulString);
+           
             tmp.text = a.Item1;
             isComplete = a.Item3;
             time = a.Item2;
         }
         else
         {
-            characterTime = new DisplayTextCharacterTime();
+            characterTime =  new DisplayTextCharacterTime();
         }
     }
 }

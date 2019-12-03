@@ -51,7 +51,6 @@ namespace PetrusGames.NuclearPlant.Objects.Fire
         private void Start()
         {
             TempTime = time;
-            SoundManager.Instance.PlaySound("Fire");
             psEmission = particle.emission;
         }
 
@@ -140,9 +139,11 @@ namespace PetrusGames.NuclearPlant.Objects.Fire
 
         private IEnumerator FireApparition()
         {
+            SoundManager.Instance.PlaySound("SparkFlame");
             yield return new WaitForSeconds(timeBeforeFlames);
             sparks.SetActive(false);
             flameObject.SetActive(true);
+            SoundManager.Instance.PlaySound("Fire");
             boxCollider.enabled = true;
         }
         #endregion

@@ -27,6 +27,7 @@ namespace PetrusGames
 
         #region PRIVATE FIELDS
         private int menuItemAtMAx = 0;
+        private bool isJoyStickReady = true;
         #endregion
 
         #region PUBLIC PROPERTIES
@@ -95,17 +96,53 @@ namespace PetrusGames
         }
     private void TestMenuInputs()
         {
-            if (Input.GetKeyDown(KeyCode.RightArrow))
+            if (Input.GetAxis("HorizontalJ") > 0.2f)
             {
-                if (menuItemAtMAx < 3)
+                if (isJoyStickReady)
                 {
-                    menuItemAtMAx++;
+                    isJoyStickReady = false;
+                    if (menuItemAtMAx < 3)
+                    {
+                        menuItemAtMAx++;
+                    }
+                    else
+                    {
+                        menuItemAtMAx = 0;
+                    }
+                    SetMenuScale(menuItemAtMAx);
                 }
-                else
+            }
+            else if ( Input.GetAxis("HorizontalJ")< -0.2f )
+            {
+                if (isJoyStickReady)
                 {
-                    menuItemAtMAx = 0;
+                    isJoyStickReady = false;
+                    if (menuItemAtMAx > 0)
+                    {
+                        menuItemAtMAx--;
+                    }
+                    else
+                    {
+                        menuItemAtMAx = 3;
+                    }
+                    SetMenuScale(menuItemAtMAx);
                 }
-                SetMenuScale(menuItemAtMAx);
+            }
+            else if (Input.GetKeyDown(KeyCode.RightArrow))
+            {
+                if (isJoyStickReady)
+                {
+                    isJoyStickReady = false;
+                    if (menuItemAtMAx < 3)
+                    {
+                        menuItemAtMAx++;
+                    }
+                    else
+                    {
+                        menuItemAtMAx = 0;
+                    }
+                    SetMenuScale(menuItemAtMAx);
+                }
             }
             else if (Input.GetKeyDown(KeyCode.LeftArrow))
             {
@@ -119,8 +156,12 @@ namespace PetrusGames
                 }
                 SetMenuScale(menuItemAtMAx);
             }
+            else
+            {
+                isJoyStickReady = true;
+            }
 
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return)||Input.GetButtonDown("Fire1"))
             {
                 SceneManager.LoadScene(menuItemAtMAx + 1);
             }

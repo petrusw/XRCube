@@ -6,6 +6,7 @@
 
 
 
+using AftahGames.NuclearSimulator;
 using PetrusGames.NuclearPlant.Managers.Data;
 using ThibautPetit;
 using UnityEngine;
@@ -108,7 +109,14 @@ namespace PetrusGames
             if (CurrentHealth <= 0)
             {
                 currentHealth = 0;
-                GameManager.instance.GameOver();                           
+                GameManager.instance.GameOver();
+            }
+
+            if (currentHealth <= 10 && currentHealth > 0)
+            {
+
+                SoundManager.Instance.PlaySound("DestructionImminent");
+
             }
         }
         #endregion

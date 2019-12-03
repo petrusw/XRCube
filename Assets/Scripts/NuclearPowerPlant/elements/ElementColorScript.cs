@@ -28,6 +28,8 @@ namespace PetrusGames.NuclearPlant.Objects.Elements
         [SerializeField] private ElementIDScript elementIDScript;
         [Header("This Element's Mesh Renderer")]
         [SerializeField] private MeshRenderer meshRenderer;
+        [Header("This Element's Trail Renderer")]
+        [SerializeField] private TrailRenderer trailRenderer;
         #endregion
 
         #region PRIVATE FIELDS
@@ -76,6 +78,7 @@ namespace PetrusGames.NuclearPlant.Objects.Elements
             {
                 Material mat = materials[elementIDScript.ElemID];
                 meshRenderer.material = mat;
+                trailRenderer.material = mat;
             }
             else
             {

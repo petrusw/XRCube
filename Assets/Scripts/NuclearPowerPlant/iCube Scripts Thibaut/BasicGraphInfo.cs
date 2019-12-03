@@ -90,7 +90,7 @@ namespace PetrusGames
             scores.Add(currentEfficiency);
         }
 
-        private void Update()
+        public virtual void Update()
         {
             if (isCounting)
                 CountDown();

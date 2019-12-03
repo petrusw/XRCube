@@ -103,7 +103,7 @@ namespace AftahGames.NuclearSimulator
                 {
                     if (!soundClips[i].audioSource.isPlaying)
                     {
-                        soundClips[i].audioSource.volume *= mainVolume;  
+                       // soundClips[i].audioSource.volume *= mainVolume;  
                         soundClips[i].audioSource.Play();
 
                     }
@@ -186,28 +186,7 @@ namespace AftahGames.NuclearSimulator
 
         #region PUBLIC FUNCTIONS
 
-        //public void Play()
-        //{
-
-        //    audioSource.volume = volume;
-        //    audioSource.pitch = pitch;
-        //    audioSource.panStereo = stereoPan;
-        //    audioSource.loop = loop;
-        //    audioSource.mute = mute;
-        //    audioSource.outputAudioMixerGroup = outpup;
-
-        //    audioSource.Play();
-
-        //}
-
-        //public void Stop()
-        //{
-        //    if (audioSource.isPlaying)
-        //    {
-        //        audioSource.Stop();
-        //    }
-
-        //}
+      
         #endregion
 
         #region EVENTS

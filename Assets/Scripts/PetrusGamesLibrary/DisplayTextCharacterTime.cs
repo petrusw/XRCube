@@ -9,6 +9,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using AftahGames.NuclearSimulator; 
 
 
 namespace PetrusGames.HelperLibrary.TextUtilities
@@ -51,6 +52,7 @@ namespace PetrusGames.HelperLibrary.TextUtilities
                 _time = 0;
                 if (newStringLength < startstring.Length + 1)
                 {
+                    SoundManager.Instance.PlaySound("WritingLetter");
                     newString = startstring.Substring(0, newStringLength);
                     newStringLength++;
 

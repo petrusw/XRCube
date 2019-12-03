@@ -32,6 +32,7 @@ namespace ThibautPetit
 
         #region EVENTS
         public event Action<bool> onChangeDirection;
+        public event Action<bool> onBeltCollide;
         #endregion
 
         #region PRIVATE FUNCTIONS
@@ -80,8 +81,8 @@ namespace ThibautPetit
         {
             if (other.CompareTag("Element"))
             {
-
                 SoundManager.Instance.PlaySound("ElementOnBelt");
+                onBeltCollide?.Invoke(true);
             }
         }
         private void OnTriggerStay(Collider other)
@@ -104,6 +105,7 @@ namespace ThibautPetit
                 //aftah put the sound
                 SoundManager.Instance.StopSound("ConveyorBeltLeft");
                 SoundManager.Instance.StopSound("ConveyorBeltRight");
+                onBeltCollide?.Invoke(false);
             }
         }
 

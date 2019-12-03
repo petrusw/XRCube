@@ -99,7 +99,7 @@ namespace PetrusGames
             HealthManager.instance.TakeDamage(damagePerWrongElement);
         }
 
-        private void OverHeatHandler()
+        private void OverHeatHandler(object sender)
         {
             HealthManager.instance.TakeDamage(damagePerOverHeatTick);
         }

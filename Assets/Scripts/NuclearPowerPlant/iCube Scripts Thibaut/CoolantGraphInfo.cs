@@ -51,7 +51,7 @@ namespace PetrusGames
             }
         }
 
-        private void OverHeatHandler()
+        private void OverHeatHandler(object sender)
         {
             currentEfficiency -= efficiencyLostPerOverheatTick;
         }

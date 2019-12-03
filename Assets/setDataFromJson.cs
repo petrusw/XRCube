@@ -10,7 +10,7 @@ public class setDataFromJson : MonoBehaviour
     [SerializeField] private DataManager dataManager;
     [SerializeField] private string JsonPath;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         var jsonDataObjects =  JsonREadWriteData.Instance.ReadJsonItem(JsonPath);
 
@@ -61,11 +61,5 @@ public class setDataFromJson : MonoBehaviour
         dataManager.FireTick = jsonDataObjects[0].fireTick;
         dataManager.GameTime = jsonDataObjects[0].gameTime;
 
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

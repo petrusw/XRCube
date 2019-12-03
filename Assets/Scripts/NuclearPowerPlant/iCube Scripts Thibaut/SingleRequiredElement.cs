@@ -7,6 +7,7 @@
 
 
 using PetrusGames.NuclearPlant.Managers.Data;
+using PetrusGames.NuclearPlant.Managers.Elements;
 using System.Collections.Generic;
 using ThibautPetit;
 using UnityEngine;

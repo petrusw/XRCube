@@ -7,6 +7,8 @@
 
 
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -65,8 +67,6 @@ namespace AftahGames.NuclearSimulator
 
 
         #region PRIVATE FUNCTIONS
-
-
 
         private void Update()
         {
@@ -145,7 +145,6 @@ namespace AftahGames.NuclearSimulator
             if (context.performed)
                 OnAbilityEvent?.Invoke(true);
 
-
         }
 
         /// <summary>Get the button A (gamepad) from the input control</summary>
@@ -154,7 +153,6 @@ namespace AftahGames.NuclearSimulator
         {
             if (context.performed)
                 OnButtonAEvent?.Invoke(true);
-
         }
 
 

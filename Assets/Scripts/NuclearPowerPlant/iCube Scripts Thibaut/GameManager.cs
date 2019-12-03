@@ -7,10 +7,10 @@
 
 
 using AftahGames.NuclearSimulator;
-using System.Collections.Generic;
 using System.Collections;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
+ 
 
 namespace PetrusGames
 {
@@ -22,6 +22,7 @@ namespace PetrusGames
         [SerializeField] private TextMeshPro good;
         [SerializeField] private TextMeshPro bad;
         [SerializeField] private float explosionTime;
+        [SerializeField] private ReadyPlayers readyPlayers;
         #endregion
 
         #region PRIVATE FIELDS
@@ -35,6 +36,7 @@ namespace PetrusGames
 
         public void StartGame()
         {
+            Time.timeScale = 1f;
             GameTimer.instance.StartTime();
         }
 
@@ -60,10 +62,18 @@ namespace PetrusGames
         private void Awake()
         {
             SetAsSingleton();
+            
         }
 
         private void Start()
         {
+            readyPlayers.onPlayerReady += PlayersReadyHandler;
+            Time.timeScale = 0f;
+        }
+
+        private void PlayersReadyHandler()
+        {
+            SoundManager.Instance.PlaySound("Song");
             StartGame();
         }
 

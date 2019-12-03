@@ -10,6 +10,7 @@ using PetrusGames.NuclearPlant.Managers.Data;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using ThibautPetit;
 using UnityEngine;
 
 
@@ -19,10 +20,13 @@ namespace PetrusGames
     {
         #region SERIALIZED FIELDS
         [SerializeField] private ConveyorBeltFailCollider failCollider;
-        private float efficiencyLostPerConveyorBeltFail;
+
         #endregion
 
         #region PRIVATE FIELDS
+        private float efficiencyLostPerConveyorBeltFail;
+        private float efficiencyLostPerSecondOnBelt;
+        private int elemOnBelt;
         #endregion
 
         #region PUBLIC PROPERTIES
@@ -40,6 +44,16 @@ namespace PetrusGames
         {
             base.Start();
             efficiencyLostPerConveyorBeltFail = DataManager.Instance.EfficiencyLostPerConveyorBeltFail;
+            efficiencyLostPerSecondOnBelt = DataManager.Instance.EfficiencyLostPerSecondOnBelt;
+            FindObjectOfType<ConveyorBelt>().onBeltCollide += BeltCollideHandler;
+        }
+
+        private void BeltCollideHandler(bool obj)
+        {
+            if (obj)
+                elemOnBelt++;
+            else
+                elemOnBelt--;
         }
 
         public override void OnEnable()
@@ -60,6 +74,13 @@ namespace PetrusGames
             failCollider.onConveyorBeltFail -= ConveyorBeltFailHandler;
             elemPos.onPlayer2ElemDestroyed -= ElemDestroyedHandler;
         }
+
+        public override void Update()
+        {
+            base.Update();
+            currentEfficiency -= efficiencyLostPerSecondOnBelt * Time.deltaTime;
+        }
+
         #endregion
     }
 }

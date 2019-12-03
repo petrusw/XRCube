@@ -80,7 +80,7 @@ namespace PetrusGames.NuclearPlant.Managers.Data
         [SerializeField] private float timeToResetElement;
         [Header("Heals")]
         [Space(30)]
-        [SerializeField] private float healthGainPerGoodElement;
+        [SerializeField] private float healthGainPerGoodElement; //
         [Header("Damages")]
         [Space(30)]
         [SerializeField] private float damagePerElementExplosion;
@@ -89,21 +89,22 @@ namespace PetrusGames.NuclearPlant.Managers.Data
         [SerializeField] private float damagePerWrongElement;
         [SerializeField] private float damagePerOverchargeTick;
 
-        [SerializeField] private float fireTick; // add this to the JSON
-        [SerializeField] private float fireDamage; // add this to the JSON
-        [Header("Difficulty Increase")] // add this part to the JSON
+        [SerializeField] private float fireTick;
+        [SerializeField] private float fireDamage; 
+        [Header("Difficulty Increase")] 
         [Space(30)]
         [SerializeField] private float converyorBeltSpeedBoost;
         [SerializeField] private float flameSpawnRateBoost;
         [SerializeField] private float heatIncreaseRateBoost;
         [SerializeField] private float difficultyIncreaseTimer;
-        [Header("Score Manager")] // add this part to the JSON
+        [Header("Score Manager")] 
         [Space(30)]
         [SerializeField] private float baseEfficiency;
         [SerializeField] private float efficientyLostPerDestroyedElement;
         [SerializeField] private float efficiencyLostPerWrongElement;
         [SerializeField] private float efficiencyLostPerUnderchargeTick;
         [SerializeField] private float efficiencyLostPerConveyorBeltFail;
+        [SerializeField] private float efficiencyLostPerSecondOnBelt; //
         [SerializeField] private float efficiencyLostPerFlameTick;
         [SerializeField] private float efficiencyLostPerOverheatTick;
         [SerializeField] private float timeToDrawGraph;
@@ -160,6 +161,7 @@ namespace PetrusGames.NuclearPlant.Managers.Data
         public float TimeToAddEfficiency { get => timeToAddEfficiency; set => timeToAddEfficiency = value; }
         public float FireTick { get => fireTick; set => fireTick = value; }
         public float FireDamage { get => fireDamage; set => fireDamage = value; }
+        public float EfficiencyLostPerSecondOnBelt { get => efficiencyLostPerSecondOnBelt; set => efficiencyLostPerSecondOnBelt = value; }
         #endregion
 
         #region PUBLIC FUNCTIONS

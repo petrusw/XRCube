@@ -494,12 +494,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.27398553, g: 0.8584906, b: 0.25511748, a: 1}
+  m_Color: {r: 0.9583941, g: 0.9716981, b: 0.9579477, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 85e7cfd023b8c4d4f86fb1948df20959, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fbd10d48c3638514bbd39a64cb19e207, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -840,9 +840,9 @@ MonoBehaviour:
   SelMenuItem: {fileID: 2047918413}
   Strings:
   - XR Cube Experience
-  - XR Cube Settings
+  - Settings
   - Tutorial
-  - None
+  - Information
 --- !u!4 &780841996
 Transform:
   m_ObjectHideFlags: 0
@@ -952,12 +952,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.09803919, g: 0.9137255, b: 0.189813, a: 1}
+  m_Color: {r: 0.9304913, g: 0.9622642, b: 0.93400466, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 37f484914aea7a741a0c6bc74d7ad3f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f0016566dad260f4ebaf6bfe40cdde8d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1396,7 +1396,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2ad250f38e4b21241b7cd207becf2bad, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1dcb3b116b11c7c4b8689c9e4d8b7dff, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

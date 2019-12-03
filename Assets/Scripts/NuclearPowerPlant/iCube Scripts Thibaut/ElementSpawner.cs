@@ -24,7 +24,7 @@ namespace PetrusGames.NuclearPlant.Managers.Elements
         [SerializeField] private List<elemID> elemIDs;
         [SerializeField] private Animator cooldownAnim;
         [SerializeField] private Animator openAnim;
-
+        [SerializeField] private GameObject cylinder;
         #endregion
 
         #region PRIVATE FIELDS
@@ -33,7 +33,30 @@ namespace PetrusGames.NuclearPlant.Managers.Elements
         private bool isBusy = false;
         #endregion
 
-        #region PUBLIC PROPERTIES
+        #region PUBLIC PROPERTIES       
+
+        public bool CanSpawn
+        {
+            get { return canSpawn; }
+            set
+            {
+                canSpawn = value;
+                CheckForCylinder();
+            }
+        }
+
+        public bool IsBusy
+        {
+            get { return isBusy; }
+            set
+            {
+                isBusy = value;
+                CheckForCylinder();
+            }
+        }
+
+        public List<elemID> ElemIDs { get => elemIDs; private set => elemIDs = value; }
+
         #endregion
 
         #region PUBLIC FUNCTIONS
@@ -68,7 +91,10 @@ namespace PetrusGames.NuclearPlant.Managers.Elements
         private void CountDown()
         {
             spawnTimer -= Time.deltaTime;
-            if (spawnTimer <= 0) { canSpawn = true; }
+            if (spawnTimer <= 0)
+            {
+                CanSpawn = true;
+            }
         }
 
         private void OnEnable()
@@ -109,10 +135,10 @@ namespace PetrusGames.NuclearPlant.Managers.Elements
         private void GetObject(int index)
         {
             if (canSpawn && !isBusy)
-            {                
+            {
                 var objTemp = ObjectPoolingWithLinq.Instance.GetObjectFromPool(element, spawnPosition.position, true);
-                objTemp.GetComponent<ElementIDScript>().ElemID = elemIDs[index];
-                canSpawn = false;
+                objTemp.GetComponent<ElementIDScript>().ElemID = ElemIDs[index];
+                CanSpawn = false;
                 spawnTimer = tempTimer;
                 SoundManager.Instance.PlaySound("SpawnerDoorOpen");
                 openAnim.Play("Open");
@@ -124,15 +150,23 @@ namespace PetrusGames.NuclearPlant.Managers.Elements
         private void OnTriggerStay(Collider other)
         {
             if (other.CompareTag("Element"))
-                isBusy = true;
+                IsBusy = true;
             else
-                isBusy = false;
+                IsBusy = false;
         }
 
         private void OnTriggerExit(Collider other)
         {
             if (other.CompareTag("Element"))
-                isBusy = false;
+                IsBusy = false;
+        }
+
+        private void CheckForCylinder()
+        {
+            if (!isBusy && canSpawn)
+                cylinder.SetActive(true);
+            else
+                cylinder.SetActive(false);
         }
     }
 }

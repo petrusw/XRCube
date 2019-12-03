@@ -6,12 +6,9 @@
 
 
 
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using AftahGames.NuclearSimulator;
 using ThibautPetit;
 using UnityEngine;
-using AftahGames.NuclearSimulator;
 
 
 namespace PetrusGames
@@ -49,22 +46,26 @@ namespace PetrusGames
             heatInfo.stopOverHeatEvent -= StopOverHeatHandler;
         }
 
-        private void StopOverHeatHandler()
+        private void StopOverHeatHandler(object sender)
         {
             if (heatDistortion.activeSelf)
             {
-                //Aftah Put Sound
+
+
                 SoundManager.Instance.StopSound("EnergieDistorsion");
+
                 heatDistortion.SetActive(false);
             }
         }
 
-        private void OverHeatHandler()
+        private void OverHeatHandler(object sender)
         {
             if (!heatDistortion.activeSelf)
             {
-                //aftah put sound
-                SoundManager.Instance.PlaySound("EnergieDistorsion"); 
+                if (!sender.Equals(this))
+                {
+                    SoundManager.Instance.PlaySound("EnergieDistorsion");
+                }
                 heatDistortion.SetActive(true);
             }
         }

@@ -44,12 +44,12 @@ namespace ThibautPetit
             anim.SetBool("isShaking", shaking);
         }
 
-        private void StopOverHeatHandler()
+        private void StopOverHeatHandler(object sender)
         {
             Shake(false);
         }
 
-        private void OverHeatHandler()
+        private void OverHeatHandler(object sender)
         {
             Shake(true);
         }

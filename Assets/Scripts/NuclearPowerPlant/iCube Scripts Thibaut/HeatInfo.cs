@@ -49,8 +49,8 @@ namespace ThibautPetit
         #endregion
 
         #region EVENTS
-        public event Action overHeatEvent;
-        public event Action stopOverHeatEvent;
+        public event Action<object> overHeatEvent;
+        public event Action<object> stopOverHeatEvent;
         public event Action<float> currentHeatUpdate;
         #endregion
 
@@ -61,6 +61,7 @@ namespace ThibautPetit
             energyInfo.SurchargingUpdate += SurchargingHandler;
             iDCheck.WrongElementDetected += WrongElementDetectedHandler;
             difficultyIncrease.onDifficultyIncrease += DiffcultyIncreaseHandler;
+            
         }
 
 
@@ -127,7 +128,7 @@ namespace ThibautPetit
             else if (currentHeat < heatThreshhold && isOverHeating)
             {
                 isOverHeating = false;
-                stopOverHeatEvent?.Invoke();
+                stopOverHeatEvent?.Invoke(this);
             }
         }
 
@@ -136,7 +137,7 @@ namespace ThibautPetit
             overHeatTick -= Time.deltaTime;
             if (overHeatTick <= 0)
             {
-                overHeatEvent?.Invoke();
+                overHeatEvent?.Invoke(this);
                 overHeatTick = 1f;
             }
         }

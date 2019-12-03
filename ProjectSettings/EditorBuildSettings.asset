@@ -17,6 +17,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/NuclearPlant/tuto.unity
     guid: 029b489992e62464caf035cb541923d2
+  - enabled: 1
+    path: Assets/Scenes/Menu/info.unity
+    guid: 7d6297a9fdd23394491dc983ea1aac00
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 103066b20ffc8c24bb6920cff7fe6a47,
       type: 2}
